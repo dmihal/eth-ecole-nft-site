@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors, gradients } from 'src/theme'
 
-const ButtonElement = styled.button`
+const ButtonElement = styled.button<any>`
   ${({ shadow }) => shadow && 'box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);'};
   padding: ${({ thin }) => (thin ? '5px 8px' : '8px 20px')};
   font-size: 19px;
@@ -14,7 +14,7 @@ const ButtonElement = styled.button`
   transition: all ease 0.5s;
 `
 
-export const RedButton = styled(ButtonElement)`
+export const RedButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${colors.red};
   border-color: ${colors.red};
@@ -26,7 +26,7 @@ export const RedButton = styled(ButtonElement)`
     }`}
 `
 
-export const GrayButton = styled(ButtonElement)`
+export const GrayButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${colors.gray};
   border-color: ${colors.white};
@@ -38,7 +38,7 @@ export const GrayButton = styled(ButtonElement)`
     }`}
 `
 
-export const WhiteButton = styled(ButtonElement)`
+export const WhiteButton = styled(ButtonElement)<any>`
   color: ${colors.black};
   background: ${colors.white};
   border-color: ${colors.red};
@@ -50,7 +50,7 @@ export const WhiteButton = styled(ButtonElement)`
     }`}
 `
 
-export const PinkButton = styled(ButtonElement)`
+export const PinkButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${colors.pink};
   border-color: ${colors.red};
@@ -61,7 +61,7 @@ export const PinkButton = styled(ButtonElement)`
     }`}
 `
 
-export const GreenButton = styled(ButtonElement)`
+export const GreenButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${colors.lime};
   border-color: ${colors.green};
@@ -72,7 +72,7 @@ export const GreenButton = styled(ButtonElement)`
     }`}
 `
 
-export const DiscordButton = styled(ButtonElement)`
+export const DiscordButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${colors.discord};
   border-color: ${colors.white};
@@ -84,7 +84,7 @@ export const DiscordButton = styled(ButtonElement)`
     }`}
 `
 
-export const GradientButton = styled(ButtonElement)`
+export const GradientButton = styled(ButtonElement)<any>`
   color: ${colors.white};
   background: ${gradients.grayred};
   border-color: ${colors.white};

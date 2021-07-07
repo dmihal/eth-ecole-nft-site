@@ -9,7 +9,7 @@ export const _Wrapper = styled.div`
     padding-right: 95px;
   }
 `
-export const _Container = styled.div`
+export const _Container = styled.div<any>`
   max-width: 1680px;
   margin: 0 auto;
   ${({ thin }) => !thin && 'padding-left: 18px'};

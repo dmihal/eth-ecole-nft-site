@@ -39,7 +39,7 @@ export const HeaderNavContainer = styled.div`
   display: flex;
   align-items: center;
 `
-export const HeaderNav = styled.nav`
+export const HeaderNav = styled.nav<any>`
   @media (max-width: ${breakpoints.lg}) {
     background: ${colors.black};
     opacity: ${({ active }) => (active ? 0.95 : 0)};
@@ -62,7 +62,7 @@ export const HeaderNav = styled.nav`
     width: 300px;
   }
 `
-export const HeaderNavItem = styled.a`
+export const HeaderNavItem = styled.a<any>`
   ${fontStyles.H3}
   color: ${({ active }) => (active ? colors.red : colors.white)};
   text-transform: uppercase;

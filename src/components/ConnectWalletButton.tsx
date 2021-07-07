@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import Button from './Button'
-import ENSName from './ENSName'
 import { useWalletWeb3React } from 'src/hooks/web3'
 import {
   walletConnect,
@@ -14,7 +13,7 @@ import {
 let web3Modal: Web3Modal
 
 const WalletButton = () => {
-  const [web3Provider, setWeb3Provider] = useState()
+  const [_web3Provider, setWeb3Provider] = useState()
   const walletWeb3ReactContext = useWalletWeb3React()
   const isConnected = walletWeb3ReactContext.active
   const walletAddress = walletWeb3ReactContext.account
