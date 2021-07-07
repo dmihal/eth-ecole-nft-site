@@ -54,7 +54,7 @@ export function getSigner(
   return library.getSigner(account).connectUnchecked()
 }
 
-export const injected = new InjectedConnector({ supportedChainIds: [1, 5] })
+export const injected = new InjectedConnector({ /*supportedChainIds: [1, 5]*/ })
 
 export const walletConnect = new WalletConnectConnector({
   rpc: { 1: RPC_URLS[1] },

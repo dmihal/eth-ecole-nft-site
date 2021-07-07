@@ -79,15 +79,7 @@ const WalletButton = () => {
           !isConnected ? setConnectClick(true) : null
         }}
       >
-        {isConnected ? (
-          <ENSName
-            provider={web3Provider}
-            address={walletAddress}
-            fallback={shortenAddress(walletAddress)}
-          />
-        ) : (
-          'Connect a Wallet'
-        )}
+        {isConnected ? shortenAddress(walletAddress) : 'Connect a Wallet' }
       </Button>
     </React.Fragment>
   )
