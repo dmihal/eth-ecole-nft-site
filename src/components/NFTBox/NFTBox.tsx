@@ -50,7 +50,7 @@ const NFTBox = () => {
       {nft ? (
         <div>
           {JSON.stringify(nft)}
-          <img src="/nft.jpg" style={{ width: 300 }} />
+          <img src="/nft.svg" style={{ width: 300 }} />
         </div>
       ) : (
         <div>
