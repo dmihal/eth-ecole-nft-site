@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useUserNFT, useNFTPrice, usePurchase } from 'src/hooks/nft'
-import { useApprove } from 'src/hooks/token'
+import { useApprove, useBalance } from 'src/hooks/token'
 
 const NFTBox = () => {
   const nft = useUserNFT()
@@ -8,6 +8,7 @@ const NFTBox = () => {
   const approve = useApprove(token, contract, price)
   const purchase = usePurchase()
   const [name, setName] = useState('')
+  const balance = useBalance(token)
 
   const approveAndPurchase = async () => {
     await approve()
@@ -18,8 +19,18 @@ const NFTBox = () => {
     <div>
       {nft ? JSON.stringify(nft) : (
         <div>
+          {balance === '0.0' && (
+            <div>
+              You need Polygon Dai to purchase this NFT.
+            </div>
+          )}
           <input placeholder="Name" value={name} onChange={(e: any) => setName(e.target.value)} />
-          <button disabled={name.length === 0} onClick={approveAndPurchase}>Purchase</button>
+          <button
+            disabled={!balance || name.length === 0}
+            onClick={approveAndPurchase}
+          >
+            Purchase
+          </button>
         </div>
       )}
     </div>
