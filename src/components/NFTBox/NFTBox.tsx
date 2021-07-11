@@ -1,7 +1,12 @@
+import styled from 'styled-components'
 import React, { useState } from 'react'
 import { useUserNFT, useNFTPrice, usePurchase } from 'src/hooks/nft'
 import { useApprove, useBalance } from 'src/hooks/token'
 import CovidModal from './CovidModal'
+
+const BoxWrapper = styled.div`
+  background-color: #FFF;
+`
 
 const NFTBox = () => {
   const nft = useUserNFT()
@@ -40,7 +45,7 @@ const NFTBox = () => {
   }
 
   return (
-    <div>
+    <BoxWrapper>
       <CovidModal
         isOpen={!!modalPromises}
         onCancel={modalPromises?.cancel}
@@ -68,7 +73,7 @@ const NFTBox = () => {
           </button>
         </div>
       )}
-    </div>
+    </BoxWrapper>
   )
 }
 

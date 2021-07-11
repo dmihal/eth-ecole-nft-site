@@ -4,7 +4,7 @@ import { colors, gradients } from 'src/theme'
 const ButtonElement = styled.button<any>`
   ${({ shadow }) => shadow && 'box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);'};
   padding: ${({ thin }) => (thin ? '5px 8px' : '8px 20px')};
-  font-size: 19px;
+  font-size: 14px;
   line-height: 26px;
   border-radius: 6px;
   text-transform: ${({ uppercase }) => (!uppercase ? 'none' : 'uppercase')};
@@ -52,12 +52,11 @@ export const WhiteButton = styled(ButtonElement)<any>`
 
 export const PinkButton = styled(ButtonElement)<any>`
   color: ${colors.white};
-  background: ${colors.pink};
   border-color: ${colors.red};
   ${({ disabled }) =>
     !disabled &&
     `&:hover {
-      background: ${colors.redder};
+      background: ${colors.red};
     }`}
 `
 

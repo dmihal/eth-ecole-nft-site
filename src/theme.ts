@@ -2,13 +2,13 @@ import { css } from 'styled-components'
 
 export const colors = {
   white: '#FFFFFF',
-  black: '#111111',
+  black: '#010101',
   gray: '#4F4F4F',
   darkgray: '#313131',
   lightGray: '#F2F2F2',
-  red: '#D02128',
+  red: '#E3347A',
   redder: '#FF000A',
-  pink: 'rgba(237, 28, 36, 0.3)',
+  pink: '#E3347A',
   green: '#44CB39',
   lime: 'rgba(68, 203, 57, 0.3)',
   discord: '#7289DA',

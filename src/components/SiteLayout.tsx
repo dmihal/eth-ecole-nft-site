@@ -1,6 +1,8 @@
 import React from 'react'
 import { normalize } from 'polished'
 import { createGlobalStyle, css } from 'styled-components'
+import { _Wrapper, _Container, _HeadlineSection } from './styles'
+import { colors } from '../theme'
 
 
 import Head from './Head'
@@ -12,9 +14,12 @@ import { network } from 'src/utils/web3'
 
 const styles = css`
   ${normalize()}
+  @import url("https://use.typekit.net/whc0fta.css");
   * {
     box-sizing: border-box;
-    font-family: 'ClearSans', Helvetica, sans-serif;
+    font-family: 'Termina', Helvetica, sans-serif;
+    background-color: ${colors.black};
+    color: ${colors.white};
   }
   h1,
   h2,
@@ -27,6 +32,15 @@ const styles = css`
   ol {
     margin: 0;
     padding: 0;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    text-transform: uppercase;
   }
 `
 
@@ -44,8 +58,13 @@ const SiteLayout = ({ pageMeta, children }) => {
     <React.Fragment>
       <GlobalStyle />
       <Head {...pageMeta} />
-      <Header />
-      <main>{children}</main>
+      <main>
+        <_Wrapper>
+          <_Container>
+            {children}
+          </_Container>
+        </_Wrapper>
+      </main>
     </React.Fragment>
   )
 }

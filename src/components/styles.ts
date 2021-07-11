@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { breakpoints } from 'src/theme'
 
 export const _Wrapper = styled.div`
+  display: flex;
+  margin-top: 10em;
   padding-left: 15px;
   padding-right: 15px;
   @media (min-width: ${breakpoints.md}) {
