@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import React, { useState } from 'react'
-import { useUserNFT, useNFTPrice, usePurchase } from 'src/hooks/nft'
+import { useUserNFT, useNFTPrice, usePurchase, useRename } from 'src/hooks/nft'
 import { useApprove, useBalance } from 'src/hooks/token'
 import CovidModal from './CovidModal'
+import NameBox from './NameBox'
 
 const BoxWrapper = styled.div`
   background-color: #FFF;
@@ -17,6 +18,7 @@ const NFTBox = () => {
   const balance = useBalance(token)
   const [loading, setLoading] = useState(false)
   const [modalPromises, setModalPromises] = useState<any>(null)
+  const rename = useRename(nft?.id)
 
   const showCovidModal = () => {
     return new Promise((resolve, reject) => {
@@ -44,6 +46,7 @@ const NFTBox = () => {
     setLoading(false)
   }
 
+
   return (
     <BoxWrapper>
       <CovidModal
@@ -53,9 +56,12 @@ const NFTBox = () => {
       />
       
       {nft ? (
-        <div>
-          {JSON.stringify(nft)}
-          <img src="/nft.svg" style={{ width: 300 }} />
+        <div style={{ display: 'flex' }}>
+          <img src="/nft.png" style={{ width: 300 }} />
+          <div>
+            <div>NFT #{nft.id}</div>
+            <NameBox name={nft.name} onChange={(newName: string) => rename(newName)} />
+          </div>
         </div>
       ) : (
         <div>

@@ -56,6 +56,20 @@ export function usePurchase() {
   const contract = useNFTContract()
 
   return async (name: string) => {
-    await contract.purchase(account, name);
+    const tx = await contract.purchase(account, name)
+    await tx.wait()
+  }
+}
+
+export function useRename(id: string) {
+  const contract = useNFTContract()
+
+  if (!id) {
+    return async () => null
+  }
+
+  return async (newName: string) => {
+    const tx = await contract.rename(id, newName)
+    await tx.wait()
   }
 }
