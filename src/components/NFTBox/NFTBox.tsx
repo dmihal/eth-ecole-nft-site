@@ -17,7 +17,12 @@ const NFTBox = () => {
 
   return (
     <div>
-      {nft ? JSON.stringify(nft) : (
+      {nft ? (
+        <div>
+          {JSON.stringify(nft)}
+          <img src="/nft.jpg" style={{ width: 300 }} />
+        </div>
+      ) : (
         <div>
           {balance === '0.0' && (
             <div>
