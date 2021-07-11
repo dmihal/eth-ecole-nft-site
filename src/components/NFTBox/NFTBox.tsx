@@ -9,10 +9,17 @@ const NFTBox = () => {
   const purchase = usePurchase()
   const [name, setName] = useState('')
   const balance = useBalance(token)
+  const [loading, setLoading] = useState(false)
 
   const approveAndPurchase = async () => {
-    await approve()
-    await purchase(name)
+    setLoading(true)
+    try {
+      await approve()
+      await purchase(name)
+    } catch (e) {
+      console.warn(e)
+    }
+    setLoading(false)
   }
 
   return (
@@ -31,7 +38,7 @@ const NFTBox = () => {
           )}
           <input placeholder="Name" value={name} onChange={(e: any) => setName(e.target.value)} />
           <button
-            disabled={!balance || name.length === 0}
+            disabled={balance === null || balance === '0.0' || name.length === 0 || loading}
             onClick={approveAndPurchase}
           >
             Purchase

@@ -32,11 +32,10 @@ export function useBalance(token: string) {
     let timer: any;
     const updateBalance = async () => {
       const balance = await contract.balanceOf(account)
-      console.log(ethers.utils.formatEther(balance))
       setBalance(ethers.utils.formatEther(balance))
       timer = setTimeout(updateBalance, 5000)
     }
-    console.log({contract})
+
     if (contract) {
       updateBalance()
     }
