@@ -44,6 +44,9 @@ const styles = css`
   p {
     line-height: 1.5;
   }
+  label {
+    font-family: 'Termina', Helvetica, sans-serif;
+  }
 `
 
 const GlobalStyle = createGlobalStyle`

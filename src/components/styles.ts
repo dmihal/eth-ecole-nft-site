@@ -32,3 +32,9 @@ export const _Input = styled.input`
   padding: 10px 8px;
   margin-bottom: 0.5em;
 `
+
+export const _CheckboxInput = styled.input`
+  margin-right: 1em;
+  background: ${colors.red};
+`
+
