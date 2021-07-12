@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints } from 'src/theme'
+import { breakpoints, colors } from 'src/theme'
 
 export const _Wrapper = styled.div`
   display: flex;
@@ -24,4 +24,11 @@ export const _Container = styled.div<any>`
     ${({ thin }) => !thin && 'padding-left: 95px'};
     ${({ thin }) => !thin && 'padding-right: 95px'};
   }
+`
+
+export const _Input = styled.input`
+  border: 1px solid ${colors.grey};
+  border-radius: 4px;
+  padding: 10px 8px;
+  margin-bottom: 0.5em;
 `

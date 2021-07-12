@@ -41,6 +41,9 @@ const styles = css`
     font-weight: 700;
     text-transform: uppercase;
   }
+  p {
+    line-height: 1.5;
+  }
 `
 
 const GlobalStyle = createGlobalStyle`

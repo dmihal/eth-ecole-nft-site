@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import Button from '../Button'
+import { _Input } from '../styles'
 
 const NameBoxContainer = styled.div`
   display: flex;
+  flex-direction: column;
 `
 
 const StaticName = styled.div`
   flex: 1;
+  margin-bottom: 0.5em;
 `
 
 const NameInput = styled.input`
@@ -34,9 +38,10 @@ const NameBox = ({ name, onChange }) => {
   if (edit) {
     return (
       <NameBoxContainer>
-        <NameInput value={newName} onChange={(e: any) => setNewName(e.target.value)} />
-        <button disabled={saving} onClick={() => setEdit(false)}>Cancel</button>
-        <button disabled={saving} onClick={change}>Save</button>
+        <_Input value={newName} onChange={(e: any) => setNewName(e.target.value)} />
+        <Button disabled={saving} onClick={() => setEdit(false)}>Cancel</Button>
+        <br />
+        <Button disabled={saving} onClick={change}>Save</Button>
       </NameBoxContainer>
     );
   }
@@ -44,7 +49,7 @@ const NameBox = ({ name, onChange }) => {
   return (
     <NameBoxContainer>
       <StaticName>{name}</StaticName>
-      <button onClick={() => setEdit(true)}>Edit</button>
+      <Button onClick={() => setEdit(true)} thin={'true'}>Edit name</Button>
     </NameBoxContainer>
   )
 }

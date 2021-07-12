@@ -16,13 +16,12 @@ const ButtonElement = styled.button<any>`
 
 export const RedButton = styled(ButtonElement)<any>`
   color: ${colors.white};
-  background: ${colors.red};
   border-color: ${colors.red};
   ${({ disabled }) =>
     !disabled &&
     `&:hover {
-      background: ${colors.redder};
-      border-color: ${colors.redder};
+      background: ${colors.red};
+      border-color: ${colors.red};
     }`}
 `
 

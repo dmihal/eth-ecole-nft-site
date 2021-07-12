@@ -4,9 +4,15 @@ import { useUserNFT, useNFTPrice, usePurchase, useRename } from 'src/hooks/nft'
 import { useApprove, useBalance } from 'src/hooks/token'
 import CovidModal from './CovidModal'
 import NameBox from './NameBox'
+import { colors, gradients, breakpoints } from 'src/theme'
+import Button from '../Button'
+import { _Input } from '../styles'
 
 const BoxWrapper = styled.div`
-  background-color: #FFF;
+  margin-top: 1em;
+  padding: 2em;
+  border: 1px solid ${colors.white};
+  border-radius: 4px;
 `
 
 const NFTDisplayContainer = styled.div`
@@ -29,6 +35,18 @@ const NFTData = styled.div`
 
 const Title = styled.h2`
   margin: 4px 0;
+`
+const ErrorContainer = styled.div`
+  margin-top: 1em;
+`
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  &:nth-child(1) {
+    margin-bottom: 20px;
+    color: red !important;
+  }
 `
 
 const NFTBox = () => {
@@ -86,20 +104,21 @@ const NFTBox = () => {
           </NFTData>
         </NFTDisplayContainer>
       ) : (
-        <div>
-          {balance === '0.0' && (
-            <div>
-              You need Polygon Dai to purchase this NFT.
-            </div>
-          )}
-          <input placeholder="Name" value={name} onChange={(e: any) => setName(e.target.value)} />
-          <button
+        <FormWrapper>
+          <_Input placeholder="Full name" value={name} onChange={(e: any) => setName(e.target.value)} />
+          <Button
             disabled={balance === null || balance === '0.0' || name.length === 0 || loading}
             onClick={approveAndPurchase}
+            thin={'true'}
           >
             Purchase
-          </button>
-        </div>
+          </Button>
+          {balance === '0.0' && (
+            <ErrorContainer>
+              You need Polygon Dai to purchase this NFT.
+            </ErrorContainer>
+          )}
+        </FormWrapper>
       )}
     </BoxWrapper>
   )

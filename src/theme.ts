@@ -17,7 +17,7 @@ export const colors = {
 
 export const gradients = {
   grayred:
-    'linear-gradient(95.78deg, #636362 28.23%, #555555 52.12%, #7E4343 100%);',
+    '#3f1022',
   black:
     'linear-gradient(0deg, #313131 0%, #1F1F1F 50.3%, #141414 95.85%, #000000 104.74%);',
 }
