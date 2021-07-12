@@ -1,12 +1,11 @@
 import React from 'react'
 import { normalize } from 'polished'
 import { createGlobalStyle, css } from 'styled-components'
-import { _Wrapper, _Container, _HeadlineSection } from './styles'
+import { _Wrapper, _Container } from './styles'
 import { colors } from '../theme'
 
 
 import Head from './Head'
-import Header from './Header'
 import { useWeb3React } from '@web3-react/core'
 import { DefaultProviderName } from 'src/constants'
 import { useEffect } from 'react'

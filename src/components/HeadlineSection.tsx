@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-import ConnectWalletButton from './ConnectWalletButton'
 import { _Wrapper, _Container } from './styles'
-import { colors, fontStyles, breakpoints } from 'src/theme'
 
 export const NavigateBack = styled.a`
 `
