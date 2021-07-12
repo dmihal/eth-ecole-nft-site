@@ -13,10 +13,6 @@ const StaticName = styled.div`
   margin-bottom: 0.5em;
 `
 
-const NameInput = styled.input`
-  flex: 1;
-`
-
 const NameBox = ({ name, onChange }) => {
   const [edit, setEdit] = useState(false)
   const [newName, setNewName] = useState(name)
@@ -49,7 +45,7 @@ const NameBox = ({ name, onChange }) => {
   return (
     <NameBoxContainer>
       <StaticName>{name}</StaticName>
-      <Button onClick={() => setEdit(true)} thin={'true'}>Edit name</Button>
+      <Button onClick={() => setEdit(true)} thin={true}>Edit name</Button>
     </NameBoxContainer>
   )
 }
