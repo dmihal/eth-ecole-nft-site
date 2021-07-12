@@ -66,3 +66,23 @@ export const network = new NetworkConnector({
   urls: { 1: RPC_URLS[1] },
   defaultChainId: 1,
 })
+
+export function switchToPolygon() {
+  // @ts-ignore
+  return window.ethereum.request({
+    method: 'wallet_addEthereumChain',
+    params: [
+      {
+        chainId: '0x89',
+        chainName: 'Matic(Polygon) Mainnet',
+        nativeCurrency: {
+          name: 'Matic',
+          symbol: 'MATIC',
+          decimals: 18
+        },
+        rpcUrls: ['https://rpc-mainnet.matic.network'],
+        blockExplorerUrls: ['https://polygonscan.com/']
+      }
+    ]
+  })
+}
