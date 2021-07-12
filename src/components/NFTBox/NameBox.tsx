@@ -1,4 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+const NameBoxContainer = styled.div`
+  display: flex;
+`
+
+const StaticName = styled.div`
+  flex: 1;
+`
+
+const NameInput = styled.input`
+  flex: 1;
+`
 
 const NameBox = ({ name, onChange }) => {
   const [edit, setEdit] = useState(false)
@@ -20,19 +33,19 @@ const NameBox = ({ name, onChange }) => {
 
   if (edit) {
     return (
-      <div style={{ display: 'flex' }}>
-        <input value={newName} onChange={(e: any) => setNewName(e.target.value)} />
+      <NameBoxContainer>
+        <NameInput value={newName} onChange={(e: any) => setNewName(e.target.value)} />
         <button disabled={saving} onClick={() => setEdit(false)}>Cancel</button>
         <button disabled={saving} onClick={change}>Save</button>
-      </div>
+      </NameBoxContainer>
     );
   }
 
   return (
-    <div style={{ display: 'flex' }}>
-      {name}
+    <NameBoxContainer>
+      <StaticName>{name}</StaticName>
       <button onClick={() => setEdit(true)}>Edit</button>
-    </div>
+    </NameBoxContainer>
   )
 }
 

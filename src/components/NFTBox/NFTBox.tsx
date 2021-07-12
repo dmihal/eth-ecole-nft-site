@@ -9,6 +9,28 @@ const BoxWrapper = styled.div`
   background-color: #FFF;
 `
 
+const NFTDisplayContainer = styled.div`
+  display: flex;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+`
+
+const NFTImg = styled.img`
+  flex: 1;
+  max-width: 50%;
+`
+
+const NFTData = styled.div`
+  flex: 1;
+  padding: 8px;
+`
+
+const Title = styled.h2`
+  margin: 4px 0;
+`
+
 const NFTBox = () => {
   const nft = useUserNFT()
   const { price, token, contract } = useNFTPrice()
@@ -56,13 +78,13 @@ const NFTBox = () => {
       />
       
       {nft ? (
-        <div style={{ display: 'flex' }}>
-          <img src="/nft.png" style={{ width: 300 }} />
-          <div>
-            <div>NFT #{nft.id}</div>
+        <NFTDisplayContainer>
+          <NFTImg src="/nft.png" />
+          <NFTData>
+            <Title>NFT #{nft.id}</Title>
             <NameBox name={nft.name} onChange={(newName: string) => rename(newName)} />
-          </div>
-        </div>
+          </NFTData>
+        </NFTDisplayContainer>
       ) : (
         <div>
           {balance === '0.0' && (
