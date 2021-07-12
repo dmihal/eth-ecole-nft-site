@@ -1,12 +1,14 @@
 export const DefaultProviderName = 'PROVIDER';
 
 export const NFT_ADDRESSES: { [chain: number]: string } = {
-  5: '0x4d4B5A27cA6B3F08834e4Ca23b281bc3646f0454',
+  5: '0x9c93643BadC15f75295EE88970bF79088177653B',
+  137: '0x45b2Cd17B5E7Bf9bBf5999B6F544b5d7af123Dac',
 }
 
 export const RPC_URLS = {
   1: 'https://mainnet.infura.io/v3/18533a1dfcd146b8994f38b8e6af372c',
   5: 'https://goerli.infura.io/v3/18533a1dfcd146b8994f38b8e6af372c',
+  137: 'https://rpc-mainnet.matic.quiknode.pro',
 }
 
 export const NFT_ABI = [
