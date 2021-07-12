@@ -27,7 +27,7 @@ export const _Container = styled.div<any>`
 `
 
 export const _Input = styled.input`
-  border: 1px solid ${colors.grey};
+  border: 1px solid ${colors.gray};
   border-radius: 4px;
   padding: 10px 8px;
   margin-bottom: 0.5em;

@@ -4,7 +4,7 @@ import { useUserNFT, useNFTPrice, usePurchase, useRename } from 'src/hooks/nft'
 import { useApprove, useBalance } from 'src/hooks/token'
 import CovidModal from './CovidModal'
 import NameBox from './NameBox'
-import { colors, gradients, breakpoints } from 'src/theme'
+import { colors } from 'src/theme'
 import Button from '../Button'
 import { _Input } from '../styles'
 
@@ -109,7 +109,7 @@ const NFTBox = () => {
           <Button
             disabled={balance === null || balance === '0.0' || name.length === 0 || loading}
             onClick={approveAndPurchase}
-            thin={'true'}
+            thin={true}
           >
             Purchase
           </Button>
