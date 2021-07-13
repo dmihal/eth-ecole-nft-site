@@ -1,6 +1,6 @@
 import Web3Modal from 'web3modal'
 import React, { useState, useEffect } from 'react'
-import WalletConnectProvider from '@walletconnect/web3-provider'
+// import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import Button from './Button'
 import { useWalletWeb3React } from 'src/hooks/web3'
@@ -27,15 +27,15 @@ const WalletButton = () => {
           network: 'mainnet',
           cacheProvider: true,
           providerOptions: {
-            walletconnect: {
-              package: WalletConnectProvider,
-              options: {
-                // infuraId: INFURA_ID,
-              },
-              connector: async () => {
-                return 'walletconnect'
-              },
-            },
+            // walletconnect: {
+            //   package: WalletConnectProvider,
+            //   options: {
+            //     // infuraId: INFURA_ID,
+            //   },
+            //   connector: async () => {
+            //     return 'walletconnect'
+            //   },
+            // },
             injected: {
               package: null,
               connector: async () => {
