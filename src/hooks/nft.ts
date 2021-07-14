@@ -41,11 +41,26 @@ export function useUserNFT() {
 
 export function useNFTPrice() {
   const contract = useNFTContract()
-  const [price, setPrice] = useState<any>({ price: null, token: null, contract: contract.address })
+  const [price, setPrice] = useState<any>({
+    price: null,
+    token: null,
+    contract: contract.address,
+    remaining: null,
+  })
 
   useEffect(() => {
-    contract && Promise.all([contract.purchasePrice(), contract.paymentToken()])
-      .then(([price, token]) => setPrice((p: any) => ({ ...p, price, token })))
+    contract && Promise.all([
+      contract.purchasePrice(),
+      contract.paymentToken(),
+      contract.totalSupply(),
+      contract.numberOfTickets(),
+    ])
+      .then(([price, token, supply, total]) => setPrice((p: any) => ({
+        ...p,
+        price,
+        token,
+        remaining: total.toString() - supply.toString(),
+      })))
   }, [contract])
 
   return price;

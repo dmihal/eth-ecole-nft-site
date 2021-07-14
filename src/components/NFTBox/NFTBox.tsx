@@ -51,7 +51,7 @@ const FormWrapper = styled.div`
 
 const NFTBox = () => {
   const nft = useUserNFT()
-  const { price, token, contract } = useNFTPrice()
+  const { price, token, contract, remaining } = useNFTPrice()
   const approve = useApprove(token, contract, price)
   const purchase = usePurchase()
   const [name, setName] = useState('')
@@ -107,7 +107,7 @@ const NFTBox = () => {
         <FormWrapper>
           <_Input placeholder="Full name" value={name} onChange={(e: any) => setName(e.target.value)} />
           <Button
-            disabled={balance === null || balance === '0.0' || name.length === 0 || loading}
+            disabled={remaining == 0 || balance === null || balance === '0.0' || name.length === 0 || loading}
             onClick={approveAndPurchase}
             thin={true}
           >
@@ -117,6 +117,13 @@ const NFTBox = () => {
             <ErrorContainer>
               You need Polygon Dai to purchase this NFT.
             </ErrorContainer>
+          )}
+          {remaining === 0 ? (
+            <ErrorContainer>
+              Tickets are sold out!
+            </ErrorContainer>
+          ) : (
+            <div>{remaining} tickets remaining</div>
           )}
         </FormWrapper>
       )}
