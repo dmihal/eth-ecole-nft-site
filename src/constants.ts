@@ -11,6 +11,14 @@ export const RPC_URLS = {
   137: 'https://rpc-mainnet.matic.quiknode.pro',
 }
 
+export const DONATION_ADDRESSES: { [chain: number]: string } = {
+  137: '0xDC0c501E884db22E71A64bDC4e6288387D729a9b',
+}
+
+export const DONATION_ABI = [
+  'function purchase(uint256 amount, string calldata name) external',
+];
+
 export const NFT_ABI = [
   {
     "inputs": [],

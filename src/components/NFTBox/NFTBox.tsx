@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import React, { useState } from 'react'
-import { useUserNFT, useNFTPrice, usePurchase, useRename } from 'src/hooks/nft'
+import { useDonate, useDonationAddress } from 'src/hooks/donation'
+import { useUserNFT, useNFTPrice, useRename } from 'src/hooks/nft'
 import { useApprove, useBalance } from 'src/hooks/token'
 import CovidModal from './CovidModal'
 import NameBox from './NameBox'
 import { colors } from 'src/theme'
 import Button from '../Button'
 import { _Input } from '../styles'
+import { ethers } from 'ethers'
 
 const BoxWrapper = styled.div`
   margin-top: 1em;
@@ -51,9 +53,11 @@ const FormWrapper = styled.div`
 
 const NFTBox = () => {
   const nft = useUserNFT()
-  const { price, token, contract, remaining } = useNFTPrice()
-  const approve = useApprove(token, contract, price)
-  const purchase = usePurchase()
+  const donationAddress = useDonationAddress()
+  const [amount, setAmount] = useState('5')
+  const { token, remaining } = useNFTPrice()
+  const approve = useApprove(token, donationAddress, amount.length > 0 ? ethers.utils.parseEther(amount) : '0')
+  const donate = useDonate()
   const [name, setName] = useState('')
   const balance = useBalance(token)
   const [loading, setLoading] = useState(false)
@@ -79,13 +83,17 @@ const NFTBox = () => {
     try {
       await showCovidModal()
       await approve()
-      await purchase(name)
+      await donate(amount, name)
     } catch (e) {
       console.warn(e)
     }
     setLoading(false)
   }
 
+  const useMax = (e: any) => {
+    e.preventDefault();
+    setAmount(balance);
+  }
 
   return (
     <BoxWrapper>
@@ -94,7 +102,7 @@ const NFTBox = () => {
         onCancel={modalPromises?.cancel}
         onComplete={modalPromises?.complete}
       />
-      
+
       {nft ? (
         <NFTDisplayContainer>
           <NFTImg src="/nft.png" />
@@ -106,6 +114,21 @@ const NFTBox = () => {
       ) : (
         <FormWrapper>
           <_Input placeholder="Full name" value={name} onChange={(e: any) => setName(e.target.value)} />
+
+          <label>
+            Donation amount:
+            <input
+              placeholder="Donation amount"
+              value={amount}
+              onChange={(e: any) => setAmount(e.target.value)}
+              type="number"
+              min="1"
+              disabled={loading}
+            />
+            Dai{' '}
+            <a href="#" onClick={useMax}>(max)</a>
+          </label>
+
           <Button
             disabled={remaining == 0 || balance === null || balance === '0.0' || name.length === 0 || loading}
             onClick={approveAndPurchase}
