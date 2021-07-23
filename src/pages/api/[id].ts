@@ -5,5 +5,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     name: `ETH Ecole Ticket #${req.query.id}`,
     description: "Ticket for ETH Ecole on July 21.",
     image: "https://eth-ecole-nft-site.vercel.app/nft.png",
+    attributes: [],
   })
 }
